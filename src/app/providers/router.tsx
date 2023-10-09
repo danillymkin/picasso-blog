@@ -1,11 +1,21 @@
+import { lazy } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 
-import { HomePage } from '@pages/home'
 import { Layout } from '@pages/layout'
-import { NotFoundPage } from '@pages/not-found'
-import { PostPage } from '@pages/post'
 
 import { PATH_PAGE } from '@shared/lib/react-router'
+
+const HomePage = lazy(() =>
+  import('@pages/home').then((module) => ({ default: module.HomePage }))
+)
+const NotFoundPage = lazy(() =>
+  import('@pages/not-found').then((module) => ({
+    default: module.NotFoundPage,
+  }))
+)
+const PostPage = lazy(() =>
+  import('@pages/post').then((module) => ({ default: module.PostPage }))
+)
 
 export const RouterProvider = () => {
   return useRoutes([
