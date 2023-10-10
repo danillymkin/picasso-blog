@@ -46,11 +46,11 @@ export const RouterProvider = () => {
             },
           ],
         },
+        {
+          path: PATH_PAGE.notFound,
+          element: <NotFoundPage />,
+        },
       ],
-    },
-    {
-      path: PATH_PAGE.notFound,
-      element: <NotFoundPage />,
     },
     {
       path: '*',
