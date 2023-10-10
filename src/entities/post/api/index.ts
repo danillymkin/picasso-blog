@@ -1,4 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+
+import { baseQuery } from '@shared/api'
 
 export type Post = {
   id: number
@@ -19,9 +21,7 @@ type FetchAllPostsResponse = {
 
 export const postApi = createApi({
   reducerPath: 'postApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://jsonplaceholder.typicode.com',
-  }),
+  baseQuery,
   endpoints: (build) => ({
     fetchAllPosts: build.query<FetchAllPostsResponse, FetchAllPostsParams>({
       query: ({ limit = 10, page = 0 }) => ({
