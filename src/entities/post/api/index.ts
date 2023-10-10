@@ -45,5 +45,10 @@ export const postApi = createApi({
         return currentArg !== previousArg
       },
     }),
+    fetchPostById: build.query<Post, number>({
+      query: (id: number) => ({
+        url: `/posts/${id}`,
+      }),
+    }),
   }),
 })
