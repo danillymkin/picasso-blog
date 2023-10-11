@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query'
 
 import { postApi } from '@entities/post'
 
@@ -10,5 +9,3 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(postApi.middleware),
 })
-
-setupListeners(store.dispatch)
