@@ -1,6 +1,4 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-
-import { baseQuery } from '@shared/api'
+import { apiSlice } from '@shared/api'
 
 export type Post = {
   id: number
@@ -19,9 +17,7 @@ type FetchAllPostsResponse = {
   totalCount: number
 }
 
-export const postApi = createApi({
-  reducerPath: 'postApi',
-  baseQuery,
+export const postApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     fetchAllPosts: build.query<FetchAllPostsResponse, FetchAllPostsParams>({
       query: ({ limit = 10, page = 0 }) => ({
